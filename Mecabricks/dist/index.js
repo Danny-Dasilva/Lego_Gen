@@ -48,8 +48,8 @@ const main = async () => {
   
   //login
   
-//   await page.type('#field-identifier', 'heliothryxaurita@gmail.com')
-//   await page.type('#field-password', '123yhs321')
+//   await page.type('#field-identifier', '')
+//   await page.type('#field-password', '')
 //   await page.click('#remember-me')
 //   await page.click('#button')
   await page.goto(workshop)
