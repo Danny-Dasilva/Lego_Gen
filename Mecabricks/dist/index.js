@@ -5,16 +5,16 @@ const fs = require('fs');
 
 
 var colors = {
-    'Medium Stone Grey': '#materials-overview > div:nth-child(1) > div:nth-child(2)',
+    'Medium_Stone_Grey': '#materials-overview > div:nth-child(1) > div:nth-child(2)',
     'White': '#materials-overview > div:nth-child(1) > div:nth-child(1)',
-    'Dark Stone Grey': '#materials-overview > div:nth-child(1) > div:nth-child(3)',
+    'Dark_Stone_Grey': '#materials-overview > div:nth-child(1) > div:nth-child(3)',
     'Black': '#materials-overview > div:nth-child(1) > div:nth-child(4)',
-    'Brick Yellow': '#materials-overview > div:nth-child(1) > div:nth-child(11)',
-    'Reddish Brown': '#materials-overview > div:nth-child(1) > div:nth-child(8)',
-    'Bright Red': '#materials-overview > div:nth-child(1) > div:nth-child(6)',
-    'Sand Yellow': '#materials-overview > div:nth-child(1) > div:nth-child(10)',
-    'Bright Yellow': '#materials-overview > div:nth-child(1) > div:nth-child(18)',
-    'Bright Blue': '#materials-overview > div:nth-child(1) > div:nth-child(30)',
+    'Brick_Yellow': '#materials-overview > div:nth-child(1) > div:nth-child(11)',
+    'Reddish_Brown': '#materials-overview > div:nth-child(1) > div:nth-child(8)',
+    'Brigh_Red': '#materials-overview > div:nth-child(1) > div:nth-child(6)',
+    'Sand_Yellow': '#materials-overview > div:nth-child(1) > div:nth-child(10)',
+    'Bright_Yellow': '#materials-overview > div:nth-child(1) > div:nth-child(18)',
+    'Bright_Blue': '#materials-overview > div:nth-child(1) > div:nth-child(30)',
 };
 let partList = [
   '4073',
@@ -32,6 +32,7 @@ const url = 'https://www.mecabricks.com/en/login'
 const workshop = 'https://www.mecabricks.com/en/workshop'
 const part = '3004'
 
+let names = [] 
 
 const main = async () => {
   await pie.initialize(app);
@@ -79,7 +80,7 @@ const main = async () => {
     await page.waitForTimeout(1000);
 
     //for loop for colors here
-    for (const [key, value] of Object.entries(colors)) {
+    for (const [color_name, color] of Object.entries(colors)) {
       await page.waitForTimeout(1000);
       // click on part
 
@@ -93,7 +94,8 @@ const main = async () => {
           }
         }   
       }, partname)
-      await page.click(value) 
+      await page.click(color) 
+      names.push(`${partname}-${color_name}`);
     
     }
 
@@ -106,8 +108,9 @@ const main = async () => {
   } 
   
 
-  
-  
+  console.log(names)
+  const fs = require('fs');
+  fs.writeFile('./my-downloads/filenames.json', JSON.stringify(names), err => err ? console.log(err): null);
     // await page.click('#menu-file')
     // await page.click('#menu-export')
     // await page.select('#export-format > select:nth-child(1)', 'mbx')
