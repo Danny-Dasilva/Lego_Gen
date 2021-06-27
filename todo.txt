@@ -1,0 +1,22 @@
+finish analytics -
+most common colors through a certain year range function
+most common parts in a year range
+
+---
+figure out json parsing out of most common data
+----
+redo electron download from mecabricks
+----
+confirm training
+-----
+do basic write up and code review
+write docker container for blender automation
+
+
+
+
+
+nice to have
+ldraw import to blender
+
+image_similarity
