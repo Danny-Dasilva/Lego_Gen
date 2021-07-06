@@ -15,8 +15,7 @@ write docker container for blender automation
 
 
 
-
-nice to have
-ldraw import to blender
-
-image_similarity
+-----------
+finish outline render
+gh pages
+redo all steps and outline draft
