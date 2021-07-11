@@ -23,12 +23,6 @@ def setup_grease(first_part):
     bpy.context.object.grease_pencil_modifiers["Line Art"].target_material = bpy.data.materials[black_material_name]
     bpy.context.object.show_in_front = True
 
-#bpy.data.objects['Stroke'].select_set(True)
-#bpy.context.object.grease_pencil_modifiers["Line Art"].source_object = bpy.data.objects["Cube"]
-
-
-#bpy.ops.wm.gpencil_export_svg(filepath='/your/filepath/test.svg')
-
 def look_at(obj_camera, point):
     loc_camera = obj_camera.matrix_world.to_translation()
 
@@ -115,10 +109,7 @@ def search(values, searchFor):
                 return k
     return None
 
-#rename_parts('all_parts')
-#scale('all_parts')
 
-#sleep(.1)
 camera = bpy.data.objects['Camera']
 
 parts = get_objects('all_parts')
@@ -126,6 +117,3 @@ setup_grease(parts[0])
 hide_parts(parts)
 render(camera, parts)
 #cleanup()
-#print("hello")
-#for render_count, part in enumerate(parts):
-#    print(part)

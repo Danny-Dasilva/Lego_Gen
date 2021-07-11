@@ -19,3 +19,6 @@ write docker container for blender automation
 finish outline render
 gh pages
 redo all steps and outline draft
+-------------
+labels, 
+multi parts for training
