@@ -1024,7 +1024,11 @@ const main = async () => {
   await window.loadURL(url);
 
   const page = await pie.getPage(browser, window);
-
+  page.on('console', consoleObj => {
+    if (consoleObj.type() === 'log') {
+        console.log(consoleObj.text());
+    }
+})//console.log values
   //login
   const element_is_visible = await page.$eval('#gallery', (elem) => {
     return window.getComputedStyle(elem).getPropertyValue('display') !== 'none' && elem.offsetHeight
@@ -1059,12 +1063,12 @@ const main = async () => {
   );
   console.log("visible")
 
-  await page.click(
-    ".filter-panel > div:nth-child(1) > div:nth-child(1) > label:nth-child(2) > svg:nth-child(1)"
-  );
-  await page.click(
-    ".filter-panel > div:nth-child(3) > div:nth-child(1) > label:nth-child(2) > svg:nth-child(1)"
-  );
+  // await page.click(
+  //   ".filter-panel > div:nth-child(1) > div:nth-child(1) > label:nth-child(2) > svg:nth-child(1)"
+  // );
+  // await page.click(
+  //   ".filter-panel > div:nth-child(3) > div:nth-child(1) > label:nth-child(2) > svg:nth-child(1)"
+  // );
   //search in loop
 
   console.log("here");
@@ -1084,13 +1088,19 @@ const main = async () => {
 
       await page.evaluate((partname) => {
         let elements = document.getElementsByClassName("reference");
-        console.log(partname, "working");
+        let found = false
         for (let element of elements) {
           let name = element.innerHTML;
           if (name === partname) {
+            found = true
             element.click();
+            break
           } 
+
         }
+        if (!found) {console.log(partname, found)};
+
+
       }, partname);
       await page.click(color);
       names.push(`${partname}-${color_name}`);
